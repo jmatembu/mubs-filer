@@ -10,11 +10,9 @@
 </div>
 <div class="row wrapper border-bottom white-bg page-heading">
   <div class="col-xs-12 col-sm-6 col-md-7">
-    <h2>Department: {{ $department->name }}</h2>
+    <h2>Department of {{ $department->name }}</h2>
     <ol class="breadcrumb">
-      <li>
-        <a href="{{ route('dashboard') }}">Dashboard</a>
-      </li>
+      <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
       <li>
         <a href="{{ route('faculties.show', $department->faculty->id) }}">Faculty</a>
       </li>
@@ -39,21 +37,11 @@
   </div>
 </div>
 <div class="wrapper wrapper-content">
-  <!-- <div class="row animated fadeInRight">
-    <div class="col-md-12">
-        <div class="ibox float-e-margins">
-            <div class="ibox-title">
-              <h5>{{ $department->name }}</h5>
-            </div>
-        </div>
-    </div>
-  </div> -->
-
   <div class="row animated fadeInRight">
     <div class="col-md-12">
       <div class="ibox float-e-margins">
         <div class="ibox-title">
-          <h5>Programs in {{ $department->name }}</h5>
+          <h5>Programs in the Department of {{ $department->name }}</h5>
         </div>
         <div class="ibox-content ">
           @if ($department->programs->count())
