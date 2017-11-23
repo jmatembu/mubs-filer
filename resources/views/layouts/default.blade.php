@@ -16,9 +16,9 @@
     <link href="{{ asset('font-awesome/css/font-awesome.css') }}" rel="stylesheet">
     <link href="{{ asset('css/plugins/dataTables/dataTables.bootstrap.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-    @show
-
     <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
+    @show
+       
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
@@ -40,7 +40,7 @@
           </div>
           <ul class="nav navbar-top-links navbar-right">
             <li>
-              <span class="m-r-sm text-muted welcome-message">Welcome {{ auth()->user()->name }}</span>
+              <span class="m-r-sm text-muted welcome-message">Welcome {{ auth()->user()->first_name }}</span>
             </li>
             <li>
               <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>

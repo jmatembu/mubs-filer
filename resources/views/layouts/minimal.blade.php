@@ -27,16 +27,13 @@
 </head>
 <body class="gray-bg">
 
-    <div class="middle-box text-center loginscreen animated fadeInDown">
-        <div>
-            <div>
-                <h1 class="logo-name">{{ config('app.name', 'Laravel') }}</h1>
-            </div>
-
-            @yield('content')
-
+    <div class="row animated fadeInDown">
+        <div class="col-md-offset-4 col-md-4">
+            <h1 class="logo-name text-center">{{ config('app.name', 'Laravel') }}</h1>
         </div>
     </div>
+
+    @yield('content')
 
     <!-- Scripts -->
     <script src="js/jquery-3.1.1.min.js"></script>

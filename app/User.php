@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name', 'last_name', 'gender', 'position', 'category', 'department_id', 'email', 'password',
     ];
 
     /**
@@ -26,4 +26,24 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function facilitators()
+    {
+        return $this->belongsToMany(Course::class)->withPivot('academic_year', 'semester', 'team_leader');
+    }
+
+    public function markers()
+    {
+        return $this->belongsToMany(Exam::class, 'markers')->withPivot('quantity');
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
+
+    public function fullName()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
 }

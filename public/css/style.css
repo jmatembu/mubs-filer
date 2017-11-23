@@ -8563,3 +8563,7 @@ body.md-skin {
 .logo-element img {
   width: 100%;
 }
+
+.form__inline {
+  display: inline-block;
+}
