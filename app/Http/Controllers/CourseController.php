@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use App\User;
 use App\Course;
+use App\Program;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,9 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        $courses = Course::orderBy('name')->get();
+
+        return view('courses.index', compact('courses'));
     }
 
     /**
@@ -27,7 +30,10 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        $programsList = Program::orderBy('name')
+                            ->pluck('name', 'id');
+
+        return view('courses.create', compact('programsList'));
     }
 
     /**
@@ -38,7 +44,20 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $this->validate($request, [
+            'name' => 'required|min:5|max:255',
+            'name_code' => 'required|min:2|max:10',
+            'course_code' => 'required|min:7|max:10',
+            'year_of_study' => 'required|string|min:3|max:5',
+            'program_id' => 'required|exists:programs,id',
+            'description' => 'required|max:5000'
+        ]);
+
+        Course::create($request->all());
+
+        return redirect()->route('courses.index')
+            ->with('success', 'Course created successfully');
     }
 
     /**

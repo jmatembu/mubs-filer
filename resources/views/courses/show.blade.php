@@ -51,35 +51,23 @@
   </div>
 </div>
 <div class="wrapper wrapper-content">
-  <!-- <div class="row animated fadeInRight">
-    <div class="col-md-12">
-        <div class="ibox float-e-margins">
-            <div class="ibox-title">
-              <h5>{{ $course->name }}</h5>
-            </div>
-        </div>
-    </div>
-  </div> -->
-
   <div class="row animated fadeInRight">
-    <div class="col-md-7">
+    <div class="col-md-8">
       <div class="ibox float-e-margins">
         <div class="ibox-title">
-          <h5>Exams scheduled for {{ $course->name }}</h5>
-        </div>
-        <div class="ibox-content">
-          <div class="text-right">
+          <h5>Scheduled Tests/Examinations</h5>
+          <div class="pull-right">
             <button type="button" class="btn btn-outline btn-primary btn-sm" data-toggle="modal" data-target="#addExam"><i class="fa fa-plus"></i> Add Exam</button>
           </div>
-          <div class="hr-line-dashed"></div>
+        </div>
+        <div class="ibox-content">
           @if ($course->exams->count())
           <div class="table-responsive">
             <table class="table">
               <thead>
                 <tr>
                   <th>Exam</th>
-                  <th>A/Y</th>
-                  <th>Sem</th>
+                  <th>A/Y (Sem)</th>
                   <th>Date</th>
                   <th>Status</th>
                 </tr>
@@ -88,9 +76,8 @@
                 @foreach($course->exams as $exam)
                 <tr>
                   <td><a href="{{ route('exams.show', $exam->id) }}">{{ $exam->exam_type }}</a></td>
-                  <td>{{ $exam->academic_year }}</td>
-                  <td>{{ $exam->semester }}</td>
-                  <td>{{ $exam->exam_schedule }}</td>
+                  <td>{{ $exam->academic_year }} ({{ $exam->semester }})</td>
+                  <td>{{ $exam->exam_schedule->toFormattedDateString() }}</td>
                   <td>{{ $exam->status }}</td>
                   <td>
                     <button type="button" class="btn btn-outline btn-primary btn-xs"><i class="fa fa-check"></i></button>
@@ -101,45 +88,40 @@
             </table>
           </div>
           @else
+          <div class="hr-line-dashed"></div>
           <p>No examinations associated with this course</p>
           @endif
         </div>
       </div>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-4">
       <div class="ibox float-e-margins">
         <div class="ibox-title">
-          <h5>Facilitators assigned to {{ $course->name }}</h5>
-        </div>
-        <div class="ibox-content">
-          <div class="text-right">
+          <h5>Facilitators</h5>
+          <div class="pull-right">
             <button type="button" class="btn btn-outline btn-primary btn-sm" data-toggle="modal" data-target="#assignFacilitator"><i class="fa fa-plus"></i> Assign Facilitator</button>
           </div>
-          <div class="hr-line-dashed"></div>
+        </div>
+        <div class="ibox-content">
           @if ($course->facilitators->count())
           <div class="table-responsive">
             <table class="table">
               <thead>
                 <tr>
-                  <th>Facilitator</th>
-                  <th>A/Y</th>
-                  <th>Sem</th>
-                  <th>Team Leader</th>
+                  <th>Name</th>
                 </tr>
               </thead>
               <tbody>
                 @foreach($course->facilitators as $facilitator)
                 <tr>
-                  <td><a href="{{ route('users.show', $facilitator->id) }}">{{ $facilitator->first_name . ' ' . $facilitator->last_name }}</a></td>
-                  <td>{{ $facilitator->pivot->academic_year }}</td>
-                  <td>{{ $facilitator->pivot->semester }}</td>
-                  <td>{{ $facilitator->pivot->team_leader }}</td>
+                  <td><a href="{{ route('users.show', $facilitator->id) }}">{{ $facilitator->fullName() }}</a></td>
                 </tr>
                 @endforeach
               </tbody>
             </table>
           </div>
           @else
+          <div class="hr-line-dashed"></div>
           <p>No facilitators associated with this course</p>
           @endif
         </div>
