@@ -167,7 +167,9 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
-
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+        Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -176,8 +178,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Collective\Html\HtmlServiceProvider::class,
-        Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
     ],
 
     /*
@@ -228,6 +228,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];
