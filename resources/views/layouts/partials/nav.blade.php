@@ -35,10 +35,10 @@
         </ul>
       </li>
       <li>
-        <a href="#"><i class="fa fa-file-o"></i> <span class="nav-label">Examinations</span><span class="fa arrow"></span></a>
+        <a href="#"><i class="fa fa-file-o"></i> <span class="nav-label">Reports</span><span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
-          <li><a href="{{ route('exams.index') }}"><i class="fa fa-file-o"></i> Coursework</a></li>
-          <li><a href="#"><i class="fa fa-file-o"></i> Final Examinations</a></li>
+          <li><a href="#"><i class="fa fa-file-o"></i> Marking</a></li>
+          <li><a href="#"><i class="fa fa-file-o"></i> Academic Files</a></li>
         </ul>
       </li>
     </ul>
