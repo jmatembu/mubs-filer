@@ -29,7 +29,10 @@
 
     <div class="row animated fadeInDown">
         <div class="col-md-offset-4 col-md-4">
-            <h1 class="logo-name text-center">{{ config('app.name', 'Laravel') }}</h1>
+            <h1 class="logo-name text-center">
+                <img src="{{ asset('img/logo_main.png') }}" alt="MUBS Filer Logo">
+                MUBS <br> Academic Filer
+            </h1>
         </div>
     </div>
 
