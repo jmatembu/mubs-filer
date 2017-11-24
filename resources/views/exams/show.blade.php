@@ -2,6 +2,11 @@
 
 @section('title', $exam->exam_type)
 
+@section('styles')
+  @parent
+  {!! Charts::styles() !!}
+@endsection
+
 @section('content')
 <div class="row">
   <div class="col-xs-12">
@@ -54,16 +59,15 @@
     <div class="col-md-8">
       <div class="ibox float-e-margins">
         <div class="ibox-title">
-          <h5>Files uploaded for {{ $exam->exam_type }}</h5>
+          <h5>{{ $exam->exam_type }} Files</h5>
+          <div class="pull-right">
+            <button type="button" class="btn btn-outline btn-primary btn-sm" data-toggle="modal" data-target="#addExamFile"><i class="fa fa-upload"></i> Upload File</button>
+          </div>
         </div>
         <div class="ibox-content">
-          <div class="text-right">
-            <button type="button" class="btn btn-outline btn-primary btn-sm" data-toggle="modal" data-target="#addExamFile"><i class="fa fa-upload"></i> Upload Exam File</button>
-          </div>
-          <div class="hr-line-dashed"></div>
           @if($exam->getMedia()->count())
           <div class="table-responsive">
-            <table class="table">
+            <table class="table table-striped table-collapsed">
               <thead>
                 <tr>
                   <th>File Category</th>
@@ -94,6 +98,7 @@
             </table>
           </div>
           @else
+          <div class="hr-line-dashed"></div>
           <p>No files have been added for this exam.</p>
           @endif     
         </div>
@@ -103,18 +108,17 @@
       <div class="ibox float-e-margins">
         <div class="ibox-title">
           <h5>Marking Info</h5>
+          <div class="pull-right">
+            <button type="button" class="btn btn-outline btn-primary btn-sm" data-toggle="modal" data-target="#addMarkingInfo"><i class="fa fa-plus"></i> Add Info</button>
+          </div>
         </div>
         <div class="ibox-content">
-          <div class="text-right">
-            <button type="button" class="btn btn-outline btn-primary btn-sm" data-toggle="modal" data-target="#addMarkingInfo"><i class="fa fa-plus"></i> Add Marking Info</button>
-          </div>
-          <div class="hr-line-dashed"></div>
           @if ($exam->markers->count())
           <div class="table-responsive">
-            <table class="table">
+            <table class="table table-striped table-collapsed">
               <thead>
                 <tr>
-                  <th>Facilitator</th>
+                  <th>Facilitator's Name</th>
                   <th class="text-right">No. of Scripts</th>
                 </tr>
               </thead>
@@ -129,10 +133,17 @@
             </table>
           </div>
           @else
+          <div class="hr-line-dashed"></div>
           <p>No facilitators associated with this exam</p>
           @endif
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="row animated fadeInRight">
+    <div class="col-md-8">
+      {!! $chart->html() !!}
     </div>
   </div>
 </div>
@@ -198,4 +209,11 @@
       </div>
   </div>
 </div>
+@endsection
+
+@section('scripts')
+  @parent
+
+  {!! Charts::scripts() !!}
+  {!! $chart->script() !!}
 @endsection

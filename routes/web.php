@@ -1,5 +1,7 @@
 <?php
 
+use App\Exam;
+use Maatwebsite\Excel\Excel;
 /*
 |--------------------------------------------------------------------------
 | Web Routes

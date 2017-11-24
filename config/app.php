@@ -136,7 +136,6 @@ return [
     */
 
     'providers' => [
-
         /*
          * Laravel Framework Service Providers...
          */
@@ -170,6 +169,7 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -229,6 +229,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
     ],
 
 ];

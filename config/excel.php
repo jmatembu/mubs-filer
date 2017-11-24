@@ -63,10 +63,10 @@ return array(
         'title'          => 'Spreadsheet',
         'description'    => 'Default spreadsheet export',
         'subject'        => 'Spreadsheet export',
-        'keywords'       => 'maatwebsite, excel, export',
+        'keywords'       => 'excel, export',
         'category'       => 'Excel',
-        'manager'        => 'Maatwebsite',
-        'company'        => 'Maatwebsite',
+        'manager'        => 'Academic Filer',
+        'company'        => 'Makerere University Business School',
     ],
 
     /*
@@ -106,7 +106,7 @@ return array(
     |
     */
 
-    'creator'    => 'Maatwebsite',
+    'creator'    => 'Academic Filer',
 
     'csv'        => [
         /*
@@ -476,7 +476,7 @@ return array(
         | When set to true, it will return a sheet collection instead.
         |
         */
-        'force_sheets_collection' => false,
+        'force_sheets_collection' => true,
 
         /*
         |--------------------------------------------------------------------------

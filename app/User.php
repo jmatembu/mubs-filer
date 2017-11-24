@@ -29,7 +29,7 @@ class User extends Authenticatable
 
     public function facilitators()
     {
-        return $this->belongsToMany(Course::class)->withPivot('academic_year', 'semester', 'team_leader');
+        return $this->belongsToMany(Course::class, 'facilitators')->withPivot('academic_year', 'semester', 'team_leader');
     }
 
     public function markers()
@@ -40,6 +40,13 @@ class User extends Authenticatable
     public function department()
     {
         return $this->belongsTo(Department::class);
+    }
+
+    public function coursesAssigned()
+    {
+        $courses = [];
+        
+        $this->markers();//->program->department_id;
     }
 
     public function fullName()

@@ -16,9 +16,9 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $courses = Course::orderBy('name')->get();
+        $courses = $request->user()->facilitators;
 
         return view('courses.index', compact('courses'));
     }
@@ -31,7 +31,7 @@ class CourseController extends Controller
     public function create()
     {
         $programsList = Program::orderBy('name')
-                            ->pluck('name', 'id');
+            ->pluck('name', 'id');
 
         return view('courses.create', compact('programsList'));
     }
